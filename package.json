@@ -1,0 +1,13 @@
+{
+  "name": "dna-trails",
+  "private": true,
+  "packageManager": "pnpm@10.28.0",
+  "scripts": {
+    "dev": "pnpm --filter @dna/web dev",
+    "build": "pnpm --filter @dna/web build",
+    "mobile": "pnpm --filter @dna/mobile start",
+    "data": "node scripts/build-data.mjs",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "engines": { "node": ">=20" }
+}
