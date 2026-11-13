@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "DNA Trails",
+    "slug": "dna-trails",
+    "scheme": "dnatrails",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "plugins": ["expo-router", "expo-secure-store"],
+    "ios": { "supportsTablet": false, "bundleIdentifier": "mk.dnatrails.app" },
+    "android": {
+      "package": "mk.dnatrails.app",
+      "adaptiveIcon": { "backgroundColor": "#132B18", "foregroundImage": "./assets/android-icon-foreground.png", "backgroundImage": "./assets/android-icon-background.png", "monochromeImage": "./assets/android-icon-monochrome.png" },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": { "favicon": "./assets/favicon.png" },
+    "extra": { "apiUrl": "https://dna-trails-web-and-app.vercel.app" }
+  }
+}
