@@ -20,7 +20,7 @@ export default function MyTrail() {
         : !next ? <><Text style={type.body}>The shelf has six trails, and most Saturdays still have a car or two left.</Text><Button title="Find a trail" onPress={() => router.push('/(tabs)/trails')} /></>
         : (() => { const t = trailById(next.trail)!; const hosted = stopsOf(t).filter(s => s.host); const confirmed = next.stage !== 'booked';
           return (<>
-            <Card style={{ backgroundColor: '#F4EDD6', borderColor: '#E4D9B5' }}>
+            <Card tex="peach" style={{ borderColor: '#E4D9B5' }}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}><Text style={type.eyebrow}>Trail pass</Text><Text style={[type.small, type.mono]}>{next.code}</Text></View>
               <Text style={type.h2}>{t.title}</Text>
               <Text style={type.small}>{typeLabel(t)} · {dShort(next.date)} · {CARS[next.car].label}, {next.people} aboard</Text>

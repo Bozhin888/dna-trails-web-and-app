@@ -19,7 +19,7 @@ export default function TrailPage() {
     <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
       <Pill text={`${t.km} km`} /><Pill text={`Starts ${String(t.start)}`} /><Pill tone="gold" text={`Driven ${String(t.driven)}`} />
     </View>
-    <Card style={{ backgroundColor: '#FBF8EC' }}>
+    <Card tex="peach" style={{ borderColor: '#E4D9B5' }}>
       <Text style={{ fontSize: 26, fontWeight: '900', color: colors.deep }}>EUR {priceOf(t)} <Text style={type.small}>once, for the whole car</Text></Text>
       <Text style={type.small}>Up to {t.cap} cars a day. Works or it's free. Change your date free until 18:00 the evening before.</Text>
       <Button big title="Get this pass" onPress={buy} />

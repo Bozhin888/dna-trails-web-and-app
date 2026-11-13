@@ -5,7 +5,7 @@ import { Linking, Platform, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { api, useSession } from '../../src/session';
 import { HOSTS, stopsOf, trailById } from '../../src/trails';
-import { Button } from '../../src/ui';
+import { Button, Textured } from '../../src/ui';
 import { colors, type } from '../../src/theme';
 
 export default function Road() {
@@ -27,7 +27,7 @@ export default function Road() {
   };
   const directions = () => { const q = `${s.lat},${s.lon}`; Linking.openURL(Platform.OS === 'ios' ? `maps://?daddr=${q}` : `geo:${q}?q=${q}`); };
   const D = { color: colors.mint };
-  return (<SafeAreaView style={{ flex: 1, backgroundColor: colors.deep, padding: 20, gap: 16 }}>
+  return (<Textured kind="deep" style={{ flex: 1 }}><SafeAreaView style={{ flex: 1, padding: 20, gap: 16 }}>
     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
       <Text style={[type.eyebrow, { color: colors.gold }]}>Stop {at + 1} of {stops.length} · {t.title}</Text>
       <Text onPress={() => router.back()} style={{ color: colors.mint, fontWeight: '800' }}>Close</Text>
@@ -43,5 +43,5 @@ export default function Road() {
     <Button big kind="gold" title={s.host ? `I'm at ${HOSTS[s.host].name}'s` : "I'm here"} onPress={arrived} busy={busy} />
     <Button kind="ghostDark" title="Directions" onPress={directions} />
     {s.host ? <Button kind="ghostDark" title="This stop is closed" onPress={() => router.push({ pathname: '/refund', params: { code: p.code, host: s.host } })} /> : null}
-  </SafeAreaView>);
+  </SafeAreaView></Textured>);
 }

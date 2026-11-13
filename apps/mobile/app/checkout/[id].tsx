@@ -49,7 +49,7 @@ export default function Checkout() {
       <Chip on={method === 'card'} label={user.card ? 'Another card' : 'Card'} sub="Visa, Mastercard or Maestro" onPress={() => setMethod('card')} />
       <Chip on={method === 'wallet'} label="Apple Pay or Google Pay" sub="One tap" onPress={() => setMethod('wallet')} />
     </View>
-    <Card style={{ backgroundColor: '#FBF8EC' }}>
+    <Card tex="peach" style={{ borderColor: '#E4D9B5' }}>
       <Text style={type.body}>We call your hosts {dShort(addDays(date, -1))}, from 18:00. The pass goes to {user.name}, {user.contact}.</Text>
       <Text style={{ fontSize: 22, fontWeight: '900', color: colors.deep }}>EUR {priceOf(t)} <Text style={type.small}>once, for the whole car</Text></Text>
       {err ? <Text style={[type.small, { color: colors.rust }]}>{err}</Text> : null}

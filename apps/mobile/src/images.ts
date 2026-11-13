@@ -29,4 +29,9 @@ export const IMG: Record<string, number> = {
   'village': require('../assets/img/village.jpg'),
   'wine': require('../assets/img/wine.jpg'),
 };
+export const TEX = {
+  deep: require('../assets/img/relief-dark.jpg'),
+  mint: require('../assets/img/tex-mint.png'),
+  peach: require('../assets/img/tex-peach.png'),
+};
 export const img = (k?: string) => IMG[k || ''] ?? IMG.placeholder;

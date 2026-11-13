@@ -1,6 +1,14 @@
-import { ActivityIndicator, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View, type ViewStyle, type TextInputProps } from 'react-native';
+import { ActivityIndicator, Image, ImageBackground, Pressable, ScrollView, StyleSheet, Text, TextInput, View, type ViewStyle, type TextInputProps } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors, radius, type } from './theme';
+import { TEX } from './images';
+
+/** Brand map textures: deep = shaded relief under a green veil, mint = contour lines, peach = survey sheet. */
+export function Textured({ kind, children, style }: { kind: 'deep' | 'mint' | 'peach'; children?: React.ReactNode; style?: ViewStyle }) {
+  if (kind === 'deep') return (<ImageBackground source={TEX.deep} resizeMode="cover" style={[{ backgroundColor: colors.deep }, style]}>
+    <View style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(19,43,24,.74)' }} />{children}</ImageBackground>);
+  return (<ImageBackground source={TEX[kind]} resizeMode="repeat" style={[{ backgroundColor: kind === 'mint' ? '#E9F3EB' : '#F5EFDC' }, style]}>{children}</ImageBackground>);
+}
 
 export function Screen({ children, dark, scroll = true, style }: { children: React.ReactNode; dark?: boolean; scroll?: boolean; style?: ViewStyle }) {
   const bg = { backgroundColor: dark ? colors.deep : colors.offwhite };
@@ -38,7 +46,8 @@ export function Field({ label, error, ...p }: TextInputProps & { label: string; 
     {error ? <Text style={[type.small, { color: colors.rust }]}>{error}</Text> : null}
   </View>);
 }
-export function Card({ children, style }: { children: React.ReactNode; style?: ViewStyle }) {
+export function Card({ children, style, tex }: { children: React.ReactNode; style?: ViewStyle; tex?: 'mint' | 'peach' | 'deep' }) {
+  if (tex) return <Textured kind={tex} style={[s.card, { overflow: 'hidden' }, style] as unknown as ViewStyle}>{children}</Textured>;
   return <View style={[s.card, style]}>{children}</View>;
 }
 export function Row({ label, sub, onPress, right }: { label: string; sub?: string; onPress?: () => void; right?: string }) {
